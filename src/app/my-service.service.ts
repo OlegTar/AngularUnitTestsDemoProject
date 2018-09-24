@@ -12,6 +12,8 @@ export class MyServiceService {
 
   getData(): Observable<string[]> {
     return this.http.get<string[]>('https://localhost:44398/api/values')
-      .pipe(catchError(e => []));
+      .pipe(catchError(e => {
+        return [];
+      }));
   }
 }
