@@ -8,6 +8,7 @@ import { ComplexComponent } from './complex/complex.component';
 
 const appRoutes: Routes = [
   { path: 'simple', component: SimpleComponent },
+  { path: 'complex', component: ComplexComponent },
 ];
 
 @NgModule({

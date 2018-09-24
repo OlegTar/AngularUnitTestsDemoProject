@@ -22,4 +22,12 @@ describe('SimpleComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('click button, label abc should appear', () => {
+    component.click();
+    const element = fixture.nativeElement as HTMLElement;
+    const data = element.querySelector('#data');
+    fixture.detectChanges();
+    expect(data.innerHTML).toBe('abc');
+  });
 });
