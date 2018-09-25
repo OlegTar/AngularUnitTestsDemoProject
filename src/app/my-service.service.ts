@@ -16,4 +16,8 @@ export class MyServiceService {
         return [];
       }));
   }
+
+  getData2(): Observable<string[]> {
+    return this.http.get<string[]>('https://localhost:44398/api/values');
+  }
 }

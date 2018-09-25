@@ -42,7 +42,7 @@ describe('ComponentWithStateComponent', () => {
 
   it('after Increment value should be 1', () => {
     const store = TestBed.get(Store);
-    //component.Increment();
+    // component.Increment();
     store.dispatch(new IncrementAction());
     store.pipe(select(getValue)).subscribe(value => {
       expect(value).toBe(1);

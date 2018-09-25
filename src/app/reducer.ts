@@ -2,6 +2,7 @@ import { Action, createSelector } from '@ngrx/store';
 import { AppState } from './reducers';
 
 const INCREMENT = 'Increment';
+
 export class IncrementAction implements Action {
     type = INCREMENT;
 }

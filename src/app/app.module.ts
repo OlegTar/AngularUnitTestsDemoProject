@@ -12,12 +12,15 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './reducers';
 import { ComponentWithStateComponent } from './component-with-state/component-with-state.component';
+import { ComponentWithEffectsComponent } from './component-with-effects/component-with-effects.component';
+import { MyEffects } from './my-effects';
 
 const appRoutes: Routes = [
   { path: 'simple', component: SimpleComponent },
   { path: 'complex', component: ComplexComponent },
   { path: 'component-with-service', component: ComponentWithServiceComponent},
   { path: 'component-with-state', component: ComponentWithStateComponent},
+  { path: 'component-with-effects', component: ComponentWithEffectsComponent}
 ];
 
 @NgModule({
@@ -27,6 +30,7 @@ const appRoutes: Routes = [
     ComplexComponent,
     ComponentWithServiceComponent,
     ComponentWithStateComponent,
+    ComponentWithEffectsComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,8 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     HttpClientModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([MyEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
