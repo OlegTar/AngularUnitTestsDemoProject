@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MyServiceService } from '../my-service.service';
+import { MyService } from '../my.service';
 
 @Component({
   selector: 'app-component-with-service',
@@ -8,7 +8,7 @@ import { MyServiceService } from '../my-service.service';
 })
 export class ComponentWithServiceComponent implements OnInit {
   data: string[];
-  constructor(public myServiceService: MyServiceService) { }
+  constructor(public myServiceService: MyService) { }
 
   ngOnInit() {
     this.myServiceService.getData().subscribe(data => {

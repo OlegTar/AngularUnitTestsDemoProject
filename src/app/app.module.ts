@@ -1,19 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-
-import { AppComponent } from './app.component';
-import { SimpleComponent } from './simple/simple.component';
-import { ComplexComponent } from './complex/complex.component';
-import { ComponentWithServiceComponent } from './component-with-service/component-with-service.component';
-import { MyServiceService } from './my-service.service';
-import { StoreModule, Action, ActionReducer, State } from '@ngrx/store';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers, AppState } from './reducers';
-import { ComponentWithStateComponent } from './component-with-state/component-with-state.component';
+import { ActionReducer, StoreModule } from '@ngrx/store';
+import { AppComponent } from './app.component';
+import { ComplexComponent } from './complex/complex.component';
 import { ComponentWithEffectsComponent } from './component-with-effects/component-with-effects.component';
+import { ComponentWithServiceComponent } from './component-with-service/component-with-service.component';
+import { ComponentWithStateComponent } from './component-with-state/component-with-state.component';
 import { MyEffects } from './my-effects';
+import { AppState, reducers } from './reducers';
+import { SimpleComponent } from './simple/simple.component';
+
 
 const appRoutes: Routes = [
   { path: 'simple', component: SimpleComponent },

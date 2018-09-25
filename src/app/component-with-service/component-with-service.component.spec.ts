@@ -1,7 +1,7 @@
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ComponentWithServiceComponent } from './component-with-service.component';
-import { MyServiceService } from '../my-service.service';
+import { MyService } from '../my.service';
 import { of } from 'rxjs/internal/observable/of';
 import { By } from '@angular/platform-browser';
 import { throwError, defer } from 'rxjs';
@@ -10,7 +10,7 @@ import { throwError, defer } from 'rxjs';
 describe('ComponentWithServiceComponent', () => {
   let component: ComponentWithServiceComponent;
   let fixture: ComponentFixture<ComponentWithServiceComponent>;
-  const fakeService: jasmine.SpyObj<MyServiceService> = jasmine.createSpyObj('MyServiceService', ['getData']);
+  const fakeService: jasmine.SpyObj<MyService> = jasmine.createSpyObj('MyServiceService', ['getData']);
   fakeService.getData.and.returnValue(of(['a', 'b']));
 
   const fakeServiceHttp: jasmine.SpyObj<HttpClient> = jasmine.createSpyObj('HttpClient', ['get']);
@@ -46,7 +46,7 @@ describe('ComponentWithServiceComponent', () => {
   });
 
   it('service throws errors, no divs', () => {
-    //const fakeHttp: jasmine.SpyObj<HttpClient> = TestBed.get(HttpClient);
+    // const fakeHttp: jasmine.SpyObj<HttpClient> = TestBed.get(HttpClient);
     fixture = TestBed.createComponent(ComponentWithServiceComponent);
     component = fixture.componentInstance;
     const fakeHttp2: jasmine.SpyObj<HttpClient> = TestBed.get(HttpClient);

@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class MyServiceService {
+export class MyService {
 
   constructor(private http: HttpClient) { }
 
