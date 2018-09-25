@@ -14,7 +14,7 @@ export class MyEffects {
     @Effect()
     requestGetDataAction$: Observable<Action> = this.actions$.pipe(
         ofType(REQUEST_GET_DATA),
-        debounceTime(400),
+        //debounceTime(10),
         switchMap((action: RequestGetDataAction) => {
             return this.service.getData2().pipe(
                 map(strings => new GetDataSuccessAction(strings)),

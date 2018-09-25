@@ -34,7 +34,7 @@ describe('ComponentWithEffectsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', fakeAsync(() => {
+  it('get Data', fakeAsync(() => {
     const service: jasmine.SpyObj<MyService> = TestBed.get(MyService);
     service.getData2.and.returnValue(of(['a']));
     component.getData();
