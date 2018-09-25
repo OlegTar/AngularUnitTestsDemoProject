@@ -8,9 +8,9 @@ import { SimpleComponent } from './simple/simple.component';
 import { ComplexComponent } from './complex/complex.component';
 import { ComponentWithServiceComponent } from './component-with-service/component-with-service.component';
 import { MyServiceService } from './my-service.service';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, Action, ActionReducer, State } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers } from './reducers';
+import { reducers, AppState } from './reducers';
 import { ComponentWithStateComponent } from './component-with-state/component-with-state.component';
 import { ComponentWithEffectsComponent } from './component-with-effects/component-with-effects.component';
 import { MyEffects } from './my-effects';
@@ -39,10 +39,19 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     HttpClientModule,
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(reducers, {metaReducers: [logger]}),
     EffectsModule.forRoot([MyEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function logger(reducer_: ActionReducer<AppState>): ActionReducer<any, any> {
+  return function (state: AppState, action: any): AppState {
+      console.log('state', state);
+      console.log('action', action);
+
+      return reducer_(state, action);
+  };
+}

@@ -9,15 +9,16 @@ import { of } from 'rxjs';
 
 @Injectable()
 export class MyEffects {
-    constructor(private service: MyServiceService, private actions$: Observable<MyAction>) {}
+    constructor(private service: MyServiceService, private actions$: Actions) {}
 
     @Effect()
     requestGetDataAction$: Observable<Action> = this.actions$.pipe(
         ofType(REQUEST_GET_DATA),
         switchMap((action: RequestGetDataAction) => {
-            return this.service.getData2();
-        }),
-        map(strings => new GetDataSuccessAction(strings)),
-        catchError(e => of(new GetDataErrorAction()))
+            return this.service.getData2().pipe(
+                map(strings => new GetDataSuccessAction(strings)),
+                catchError(e => of(new GetDataErrorAction()))
+            );
+        })
     );
 }
