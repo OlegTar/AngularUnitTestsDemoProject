@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../reducers';
 import { Observable } from 'rxjs';
-import { getStrings, RequestGetDataAction } from '../reducer2';
+import { getStrings, RequestGetDataAction, TestAction } from '../reducer2';
 
 @Component({
   selector: 'app-component-with-effects',
@@ -20,5 +20,9 @@ export class ComponentWithEffectsComponent implements OnInit {
 
   getData() {
     this.store.dispatch(new RequestGetDataAction());
+  }
+
+  testAction() {
+    this.store.dispatch(new TestAction([1, 2, 3]));
   }
 }
